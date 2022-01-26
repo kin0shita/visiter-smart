@@ -1,0 +1,32 @@
+<!-- ベーステンプレートを適用する -->
+{% extends 'base.html' %}
+<!-- ヘッダー情報のページタイトルを設定する -->
+{% block title %}マイページ{% endblock %}
+
+      {% block contents %}
+      
+      <!-- タイトルテンプレートは組み込まない -->
+      
+      <!-- ユーザーの投稿件数を表示 -->
+      {% if user.is_authenticated %}
+        <br>
+        <div style="text-align:center">
+          <h4>{{user.last_name}} {{user.first_name}}さんのマイページ</h4>
+          {% if object_list.count != 1 %}
+            <p>{{user.last_name}} {{user.first_name}}さんが既に登録されている面会予定はありません</p>
+            <a href="{% url 'visit:regist_visit' %}">面会事前登録をする</a>
+          {% else %} 
+          　<p>こちら↓から登録済みの面会の詳細が確認できます</p> 
+          {% endif %}
+            
+         
+          <!-- 登録一覧テンプレートの組み込み -->
+          {% include "visit_list.html" %} 
+
+      
+        </div>
+        <hr>
+      {% endif %}
+        
+    
+      {% endblock %}

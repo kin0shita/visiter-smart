@@ -1,0 +1,77 @@
+<!-- 静的ファイルのURLを生成するstaticタグをロードする -->
+{% load static %}
+<!doctype html>
+<!-- 言語指定をenからjaに変更 -->
+<html lang="ja" class="h-100">
+    <head>
+        <titke></titke>
+        <meta charset="utf-8">
+        
+        <!-- ビューポートの設定 -->
+        <meta name="viewpoint" content="width=device-width,initial-scale=1">
+        <!-- スタイルシートの読み込み -->
+        <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'header-footer.css' %}" />
+        
+    </head>
+  
+  <body>
+    <!-- ページのヘッダー -->
+    <header>
+      <!-- ナビゲーションバーのヘッダー -->
+      
+        <div class="navbar">
+            <div>
+              <!-- ヘッダーのタイトルと本文-->
+              <strong>面会スマート</strong>
+              <p>
+                面会をされるご家族のみなさま、<br>
+                ○○病院に入院されている患者様に面会をするにあたって、事前に本サイトからご登録お願いいたします。
+              </p>
+            </div>
+
+            <div>
+              <ul>
+                <!-- ナビゲーションメニュー -->
+                {% if user.is_authenticated %}
+                  <!-- ログイン中のメニュー -->
+                  <li><a href="{% url 'visit:mypage' %}"
+                         class="text-white">マイページ</a></li>
+                  <li><a href="{% url 'accounts:logout' %}"
+                         class="text-white">ログアウト</a></li>
+                  <li><a href="{% url 'password_reset' %}"
+                         class="text-white">パスワードのリセット</a></li>
+                {% else %}
+                  <!-- ログイン状態ではない場合のメニュー -->
+                  <li><a href="{% url 'accounts:signup' %}"
+                         class="text-white">会員登録はこちら</a></li>
+                  <li><a href="{% url 'accounts:login' %}"
+                         class="text-white">ログイン</a></li>
+                {% endif %}
+              </ul>
+            </div>
+        </div>
+    </header>
+    
+    
+    <!-- メインコンテンツ -->
+    <main>
+      <!-- メインコンテンツの本体部分は各ページのテンプレートで埋め込む -->
+      {% block contents %}{% endblock %}
+    </main>
+
+    <!-- フッター -->
+    <footer>
+        <br>
+        <br>
+        <p>
+          <a href="{% url 'visit:index' %}">トップページへ</a>
+        </p>
+        <!-- フッターのテキストを任意のものに書き換え-->
+        <p>(c)2021 Eiko Takaoka Laboratory, Sophia Universuty. All Rights Reserved.</p>
+    </footer>
+    <!-- フッターの終了 -->
+      
+
+  </body>
+</html>

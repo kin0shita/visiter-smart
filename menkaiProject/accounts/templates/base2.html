@@ -1,0 +1,43 @@
+<!-- 静的ファイルのURLを生成するstaticタグをロードする -->
+{% load static %}
+<!doctype html>
+<!-- 言語指定をenからjaに変更 -->
+<html lang="ja" class="h-100">
+    <head>
+        <titke></titke>
+        <meta charset="utf-8">
+        
+        <!-- ビューポートの設定 -->
+        <meta name="viewpoint" content="width=device-width,initial-scale=1">
+        <!-- スタイルシートの読み込み -->
+        <link rel="stylesheet" type="text/css" href="{% static 'header-footer.css' %}" />
+        
+    </head>
+  
+  <body>
+    <!-- ページのヘッダー -->
+    <header>
+    </header>
+    
+    <!-- メインコンテンツ -->
+    <main>
+      <!-- メインコンテンツの本体部分は各ページのテンプレートで埋め込む -->
+      {% block contents %}{% endblock %}
+    </main>
+
+    <!-- フッター -->
+    <footer>
+        <br>
+        
+        <br>
+        <p>
+          <a href="{% url 'visit:index' %}">トップページへ</a>
+        </p>
+        <!-- フッターのテキストを任意のものに書き換え-->
+        <p>(c)2021 Eiko Takaoka Laboratory, Sophia Universuty. All Rights Reserved.</p>
+    </footer>
+    <!-- フッターの終了 -->
+      
+
+  </body>
+</html>

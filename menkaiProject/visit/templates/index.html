@@ -1,0 +1,14 @@
+<!-- ベーステンプレートを適用する -->
+{% extends 'base.html' %}
+<!-- ヘッダー情報のページタイトルを設定する -->
+{% block title %}{% endblock %}
+
+      {% block contents %}
+      
+      <!-- タイトルテンプレートの組み込み -->
+      {% include "visit_title.html" %}
+
+      <!-- 登録一覧テンプレートの組み込み -->
+      {% include "visit_list.html" %}
+      
+      {% endblock %}

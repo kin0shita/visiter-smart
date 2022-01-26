@@ -1,0 +1,25 @@
+<!-- ベーステンプレートを適用する -->
+{% extends 'base.html' %}
+<!-- ヘッダー情報のページタイトルを設定する -->
+{% block title %}面会事前登録{% endblock %}
+      {% block contents %}
+      <div class="container">
+        <!-- 行を配置 -->
+        <div class="row">
+          <div class="form1">         
+            <form method="POST"
+                  enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <p>来院目的：{{ form.purpose }}</p>
+                  <p>同伴者の有無：{{ form.accompany }}</p>
+                  <br>
+                  <p style="color: gray">※上記で「はい」を選択した方のみご入力ください。「いいえ」を選択した方は空欄のままご登録ください。</p>
+                  <p>同伴者の姓：{{ form.companion_last_name }}</p> 
+                  <p>同伴者の名：{{ form.companion_first_name }}</p>
+                  <p>同伴者の患者様との続柄：{{ form.relationship2 }}</p>
+                  <button type="submit" class="post_button">登録する</button>
+            </form>
+          </div> 
+        </div>
+      </div>
+      {% endblock %}

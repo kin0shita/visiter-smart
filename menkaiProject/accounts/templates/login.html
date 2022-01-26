@@ -1,0 +1,31 @@
+<!-- ベーステンプレートを適用する -->
+{% extends 'base1.html' %}
+<!-- ヘッダー情報のページタイトルを設定する -->
+{% block title %}ログイン{% endblock %}
+
+  {% block contents %}
+    <!-- メインの開始 -->
+    <div class="text-center">
+        <main class="form-signin">
+            <!-- メールアドレスとパスワードが一致しない場合のメッセージ -->
+            {% if form.errors %}
+                <p style="color: red">メールアドレスとパスワードが一致しません。</p>
+            {% endif %}
+
+             <!-- ログインフォームを配置 -->
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <p><a href="{% url 'password_reset' %}">パスワードを忘れた</a></p>
+              <button type="submit" class="btn">ログイン</button>
+           
+              <!-- ログイン直後のリダイレクト先(トップページ)のURLパターンを設定 -->
+              <input type="hidden" name="next" value="{% url 'visit:index' %}">
+            </form>
+            
+
+        </main>
+
+    </div>
+  {% endblock %}
+   

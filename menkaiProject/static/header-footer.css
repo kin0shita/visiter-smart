@@ -1,0 +1,56 @@
+/* ヘッダー */
+header{
+    padding: 1em 0;
+    margin-bottom: 2em;
+    background-color: white;
+    text-align: center;
+  }
+
+
+/* フッター */
+footer{
+    width: 100%;
+    border-top: 1px solid black;
+    text-align: center;
+    padding: 1em 0;
+    margin-bottom: 2em;
+    background-color: white;
+  }
+
+.navbar{
+    height: 100%;
+    padding: 1em 0;
+    margin-bottom: 1em;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    text-align: center;
+    margin-bottom: 2em;
+    background-color: white;
+  }
+.navbar ul {
+    /* 縦幅中央に配置する指定 */
+    align-items: center;
+    /* 横幅中央に配置する指定 */
+    justify-content: center;
+    width: 100%;
+    text-align: right;
+    /* リストスタイルを削除 */
+    list-style: none;
+  }
+.navbar ul li {
+    /* ナビゲーションメニュー同士の間隔を指定 */
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+.nav-item a {
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-decoration: none;
+    /* アニメーション速度を指定 */
+    transition: 0.1s ease-out;
+  }
+.nav-item a:hover {
+    /* hover後に下線が現れる指定 */
+    border-bottom: 2px solid #333333;
+  }

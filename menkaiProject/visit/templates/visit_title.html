@@ -1,0 +1,32 @@
+<!-- タイトルとナビゲーションボタン -->
+<section class="py-5 text-center container">
+    <div class="row">
+      <div class="col">
+        <!-- タイトルと本文 -->
+        <br>
+        <p>
+          <!-- ナビゲーションボタン -->
+          {% if user.is_authenticated %}
+            <!-- ログイン中のボタン -->
+            <!-- 受付番号acive==False(無効)のとき登録ページ、True(有効)のときマイページ -->
+            {% if object.active %}
+              <a href="{% url 'visit:mypage' %}"
+                class="btn">登録済みの面会詳細ページ</a>
+            {% else %}
+              <a href="{% url 'visit:regist_visit' %}"
+                class="btn">面会情報を事前登録する</a>
+            {% endif %}
+            
+            <a href="{% url 'accounts:logout' %}"
+               class="btn">ログアウト</a>
+          {% else %}
+            <!-- ログイン状態ではない場合のボタン -->
+            <a href="{% url 'accounts:signup' %}"
+               class="btn">会員登録はこちら</a>
+            <a href="{% url 'accounts:login' %}"
+               class="btn">登録済みの方はログイン</a>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+</section>

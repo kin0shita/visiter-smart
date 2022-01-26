@@ -1,0 +1,19 @@
+<!-- ベーステンプレートを適用する -->
+{% extends 'base1.html' %}
+<!-- ヘッダー情報のページタイトルを設定する -->
+{% block title %}ログアウト{% endblock %}
+
+  {% block contents %}
+      
+
+    <div class="container">
+        <div class="row">
+            <div class="col offset-4 py-4">
+            <h3>ログアウトしました</h3>
+            <p><a href="{% url 'visit:index' %}">トップページへ</a></p>
+            </div>
+        </div>
+    </div>
+
+  {% endblock %}
+ 

@@ -1,0 +1,36 @@
+<!-- ベーステンプレートを適用する -->
+{% extends 'base.html' %}
+<!-- ヘッダー情報のページタイトルを設定する -->
+{% block title %}登録情報詳細{% endblock %}
+
+      {% block contents %}
+      <!-- Bootstrapのグリッドシステム, 条件分岐 -->
+      <br>
+      <div class="container">
+        <!-- 行を配置 -->
+        <div class="row">
+          <!-- 列の左右に余白offset-3を入れる -->
+          <div class="col offset-3">
+            <!-- 来院目的 -->
+            <p>来院目的：{{object.purpose}}</p>
+            <br>
+            <!-- 同行者の有無 -->
+            <p>同行者がいる：{{object.accompany}}</p>
+            <br>
+           <!-- 登録時間 -->
+           <p>登録時間：{{object.visited_at}}</p>
+           <br>
+            
+            <!-- 登録情報がログイン中のユーザーのものであれば削除ボタンを表示 -->
+            {% if request.user == object.user %}
+            <form method="POST">
+            <!-- リンク先のURL
+                 visit/<Visitingテーブルのid値>/delete/ -->
+            <a href="{% url 'visit:visit_delete' object.pk %}"
+               class="btn btn-primary my-2">削除する</a>
+            {% endif %}
+            
+          </dv>
+        </dv>
+      </dv>
+      {% endblock %}
